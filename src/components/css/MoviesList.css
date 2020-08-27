@@ -1,0 +1,18 @@
+.movieDisplay{
+	display: flex;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	padding: 1em;
+}
+.movieDisplay::-webkit-scrollbar {
+	display: none;
+}
+.movieItem > img {
+	object-fit: contain;
+	width: 10em;
+	height: 14em;
+	transition: transform 450ms;
+}
+.movieItem > img:hover {
+	transform: scale(1.08)
+}
