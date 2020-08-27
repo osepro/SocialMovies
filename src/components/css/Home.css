@@ -1,0 +1,49 @@
+.mainApp {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #111111;
+}
+.titleHeader {
+	text-align: left;
+	padding-left: 0.5em;
+	color: #FFFFFF;
+	margin-top: 23px;
+    margin-bottom: 0;
+}
+.featureHeader {
+	text-align: left;
+	padding-left: 0.5em;
+	color: #FFFFFF;
+}
+.featureMovie {
+	/*width: 200px;*/
+	display: flex;
+	overflow-y: hidden;
+	overflow-x: scroll;
+}
+.featureMovie::-webkit-scrollbar {
+	display: none;
+}
+.featureItem > img {
+	object-fit: contain;
+	height: 40em;
+	transition: transform 450ms;
+}
+.featureItem > img:hover {
+	transform: scale(0.90)
+}
+.mainBanner {
+	background-image: url('https://image.tmdb.org/t/p/original/ta5oblpMlEcIPIS2YGcq9XEkWK2.jpg');
+	background-size: cover;
+	background-position: center top;
+	height: 520px;
+}
+
+.mainBanner > img {
+	object-fit: contain;
+}
+
+.featureMovie {
+	display: flex;
+}

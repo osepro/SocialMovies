@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A movie recommendation application for connected friends. Recommend movies to friends connected to you and also get recommended movies from friends. The more rating your recommendations received the more friends you get to recommend movies.
 
 ## Available Scripts
 
