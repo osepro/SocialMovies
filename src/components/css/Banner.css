@@ -1,0 +1,70 @@
+.mainBanner {
+	background-size: cover;
+	background-position: center top;
+	height: 520px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+.details {
+	padding-left: 0.8em;
+	color: #FFFFFF;
+	text-align: left;
+	width: 40%;
+	line-height: 1.3;
+}
+.homeBtn {
+	padding-left: 0.8em;
+}
+.homeActBtn {
+	border-radius: 4px;
+	background-color: rgba(51,51,51,0.5);
+	color: #FFFFFF;
+	padding-left: 4em;
+	padding-right: 4em;
+	padding-top: 0.9em;
+	padding-bottom: 0.9em;
+	outline: none;
+	border: none;
+	margin-right: 1em;
+	font-weight: 700;
+	cursor: pointer;
+}
+.homeActBtn:hover {
+	background-color: #e6e6e6;
+	color: #000;
+	transition: all 0.2s;
+}
+.homeBtnContainer {
+	padding-left: 0.8em;
+}
+.bannerTitle {
+	font-size: 3em;
+	color: #FFFFFF;
+	font-weight: 800;
+	padding-left: 0.2em;
+	margin-bottom: 0.3em;
+}
+
+.mainBanner > img {
+	object-fit: contain;
+}
+.mainBannerFade {
+	height: 7.5rem;
+	background-image: linear-gradient(
+	180deg, transparent, rgba(37,37,37,0.61), #111);
+	width: 100%;
+	flex-grow: 1;
+}
+.mainDetails {
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.featureMovie {
+	display: flex;
+}
