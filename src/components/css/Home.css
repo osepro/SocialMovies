@@ -33,17 +33,3 @@
 .featureItem > img:hover {
 	transform: scale(0.90)
 }
-.mainBanner {
-	background-image: url('https://image.tmdb.org/t/p/original/ta5oblpMlEcIPIS2YGcq9XEkWK2.jpg');
-	background-size: cover;
-	background-position: center top;
-	height: 520px;
-}
-
-.mainBanner > img {
-	object-fit: contain;
-}
-
-.featureMovie {
-	display: flex;
-}

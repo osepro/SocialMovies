@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import apicall from '../utils/API';
 import './css/Home.css';
 import MoviesList from './MoviesList';
+import Banner from './Banner';
 
-const baseURL = "https://image.tmdb.org/t/p/original/";
+const baseURL = "https://image.tmdb.org/t/p/original";
 
 class Home extends Component {
 	constructor(props) {
@@ -12,18 +13,22 @@ class Home extends Component {
 			banners: []
 		}
 	}
+	trunDetails = (details) => {
+		return details?.substring(0, 200)
+	}
+
 	componentDidMount() {
 		apicall(213).then(res => this.setState({ banners: res['results'] }));
 	}
 	render() {
 		const { banners } = this.state;
 		const features = banners.slice(1, 8);
-		console.log(features);
-		//const bannerDisplay = Math.floor(Math.random() * (banners.length - 1) + 1)
+		const bannerDisplay = Math.floor(Math.random() * (banners.length - 1) + 1)
+		console.log(banners);
+		const details = this.trunDetails(banners[bannerDisplay]?.overview);
 		return (
 			<div className="mainApp">
-				<div className="mainBanner">
-				</div>
+				<Banner banners={banners} bannerDisplay={bannerDisplay} details={details} />
 				<h1 className="titleHeader">NetFlix Originals</h1>
 				<MoviesList category={213} />
 				<h1 className="titleHeader">Hulu Originals</h1>

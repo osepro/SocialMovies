@@ -16,3 +16,21 @@
 .movieItem > img:hover {
 	transform: scale(1.08)
 }
+#videoplaying {
+max-height: 0%;
+transition: height 5s;
+overflow: hidden;
+}
+#videoplaying.playingVideo {
+	display: flex;
+	font-size: 20em;
+	height: 500px;
+	color: white;
+	background-color: black;
+
+}
+
+.playingVideo.active {
+	height: 500px;
+	transition: height 0.5s;
+}

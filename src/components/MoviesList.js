@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import apicall from '../utils/API';
 import PropTypes from 'prop-types';
 import './css//MoviesList.css';
@@ -9,21 +9,30 @@ class MoviesList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			movies: []
+			movies: [],
+			playing: false,
+			videoclass: '',
 		}
+	}
+	handlePlaying = () => {
+		this.setState(prevState => ({ playing: !prevState.playing, videoclass: 'playingVideo' }))
 	}
 	componentDidMount() {
 		const { category } = this.props;
 		apicall(category).then(res => this.setState({ movies: res['results'] }));
 	}
 	render() {
-		const { movies } = this.state;
+		const { movies, playing, videoclass } = this.state;
 		return (
-			<div className="movieDisplay">
-				{
-					movies.map((movie, index) => (<div key={index} className="movieItem" ><img src={`${baseURL}${movie.poster_path}`} alt={movie.name} /></div>))
-				}
-			</div>
+			<Fragment>
+				<div className="movieDisplay">
+					{
+						movies.map((movie, index) => (<div key={index} className="movieItem" onClick={this.handlePlaying}><img src={`${baseURL}${movie.poster_path}`} alt={movie.name} /></div>))
+					}
+				</div>
+				{playing && <div id="videoplaying" className={videoclass}>Video HERE</div>}
+			</Fragment>
+
 		)
 	}
 }
