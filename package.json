@@ -10,6 +10,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
+    "react-slide-toggle": "^0.3.5",
     "react-youtube": "^7.12.0"
   },
   "scripts": {

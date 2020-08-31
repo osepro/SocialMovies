@@ -19,6 +19,7 @@ class Home extends Component {
 
 	componentDidMount() {
 		apicall(213).then(res => this.setState({ banners: res['results'] }));
+		apicall(453).then(res => console.log(res));
 	}
 	render() {
 		const { banners } = this.state;
