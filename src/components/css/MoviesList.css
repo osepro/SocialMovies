@@ -60,8 +60,23 @@ justify-content: space-evenly;
     font-weight: 800;
     font-size: 25px;
 }
-
-/*.playingVideo.active {
-	height: 500px;
-	transition: height 0.5s;
-}*/
+.recommendActBtn {
+	border-radius: 4px;
+	background-color: #e6e6e6;
+	color: #000;
+	padding-left: 4em;
+	padding-right: 4em;
+	padding-top: 0.9em;
+	padding-bottom: 0.9em;
+	outline: none;
+	border: none;
+	margin-right: 1em;
+	font-weight: 700;
+	cursor: pointer;
+}
+.recommendActBtn:hover {
+	background-color: rgba(51,51,51,0.5);
+	color: #FFF;
+	border: solid 1px #FFF;
+	transition: all 0.2s;
+}

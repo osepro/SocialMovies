@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './css/Banner.css';
+import { Link } from 'react-router-dom';
 
 const baseURL = "https://image.tmdb.org/t/p/original";
 
@@ -14,7 +15,14 @@ const Banner = (props) => {
 				<div className="homeBtnContainer">
 					<button className="homeActBtn">Play</button>
 					<button className="homeActBtn">My List</button>
-					<button className="homeActBtn">Recommend</button>
+					<Link
+						to={{
+							pathname: '/recommend',
+							state: { movieName: props.banners[props.bannerDisplay]?.name, movieDetails: props.details }
+						}}
+					>
+						<button className="homeActBtn">Recommend</button>
+					</Link>
 				</div>
 				<p className="details">{props.details}</p>
 			</div>

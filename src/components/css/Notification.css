@@ -1,0 +1,28 @@
+.fadeOut {
+	color: white;
+	top: 45%;
+	padding: 1%;
+	position: fixed;
+	z-index: 10;
+	opacity: 0;
+	width: 100%;
+	transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+  }
+  .fadeIn {
+	color: white;
+	top: 45%;
+	padding: 1%;
+	position: fixed;
+	z-index: 10;
+	opacity: 1;
+	width: 100%;
+	transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+  }
+  
+  .error {
+	background-color: red;
+  }
+  
+  .success {
+	background-color: rgba(1,1,1,1);
+  }
