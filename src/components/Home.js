@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from "lodash";
 import apicall from '../utils/API';
 import './css/Home.css';
 import MoviesList from './MoviesList';
