@@ -1,28 +1,83 @@
 .recommendationContainer {
-display: flex;
-flex-direction: row;
-max-height: 100%;
+  display: flex;
+  flex-direction: row;
+  max-height: 100%;
 }
 .mainRecommendDetails {
-	background-color: rgba(1,1,1,1);
+  background-color: rgba(1, 1, 1, 1);
 }
-.mainRecommendMovie{
-	background-color: red;
-	width: 900px;
+.mainRecommendMovie {
+  width: 900px;
 }
 .recTitle {
-	font-size: 3em;
-	color: #FFFFFF;
-	font-weight: 800;
-	text-align: left;
-	padding-left: 0.3em;
+  font-size: 3em;
+  color: #ffffff;
+  font-weight: 800;
+  text-align: left;
+  padding-left: 0.3em;
 }
-.recDetails{
-	padding-left: 0.8em;
-	color: #FFFFFF;
-	text-align: left;
-	line-height: 1.3;
-	display: flex;
-	justify-content: center;
-	align-content: center;
+.recDetails {
+  padding-left: 0.8em;
+  color: #ffffff;
+  text-align: left;
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.addField {
+  width: 70%;
+  padding: 1em;
+  border-radius: 5px;
+  border: solid 1px #111;
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  outline: 0;
+}
+.addBtn {
+  padding: 1em;
+  background-color: red;
+  border: solid 1px #111;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  outline: 0;
+}
+.eachName {
+  display: flex;
+  color: #ffffff;
+  padding: 1em 1em 1em 0;
+  border-bottom: 1px #ffffff dotted;
+  margin-bottom: 5px;
+  margin-right: 1.2em;
+  margin-left: 1.2em;
+}
+.one {
+  flex: 1;
+  text-align: left;
+}
+.two {
+  flex: 1;
+}
+.three {
+  color: red;
+  font-weight: bold;
+}
+.deleteFriendbtn {
+  background-color: black;
+  color: red;
+  border: none;
+  font-weight: bold;
+  outline: 0;
+}
+.errorMsg {
+  color: #ffffff;
+}
+.recommendBtn {
+  background-color: black;
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+  outline: 0;
 }
