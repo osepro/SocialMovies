@@ -6,6 +6,11 @@ import "./css/Recommend.css";
 import YouTube from "react-youtube";
 import Notification from "./Notification";
 import movieTrailer from "movie-trailer";
+import { connect } from "react-redux";
+import addfriend from "../actions/addfriends";
+import removefriend from "../actions/removefriend";
+import recommend from "../actions/recommend";
+import { Link } from "react-router-dom";
 const baseURL = "https://image.tmdb.org/t/p/original/";
 
 const opts = {
@@ -46,9 +51,9 @@ class Recommend extends Component {
     }
   };
 
-  handleAddFriend = (e) => {
-    const { friendList } = this.state;
+  handleAddFriend = (e, friendList) => {
     let friendName = e.target.value;
+
     if (!friendList[friendName.toLowerCase()]) {
       this.setState({
         friend: e.target.value,
@@ -63,15 +68,12 @@ class Recommend extends Component {
 
   handleSubmitFriend = (e) => {
     e.preventDefault();
-    const { friend, friendList } = this.state;
-    if (!friendList[friend.toLowerCase()] && friend.length) {
-      this.setState((prevState) => ({
-        friendList: {
-          ...prevState.friendList,
-          [friend.toLowerCase()]: { name: friend, movies: [] },
-        },
-        friend: "",
-      }));
+    const { friend } = this.state;
+    const id = Math.floor(Math.random() * 1267);
+    const { dispatch, friendLists } = this.props;
+    if (!friendLists?.hasOwnProperty(friend.toLowerCase()) && friend.length) {
+      this.setState({ friend: "" });
+      dispatch(addfriend(friend.toLowerCase(), id));
     }
 
     if (!friend) {
@@ -80,33 +82,14 @@ class Recommend extends Component {
   };
 
   handleDelete = (name) => {
-    const { friendList } = this.state;
-    const newFriendList = {};
-    for (let key in friendList) {
-      if (key !== name) {
-        newFriendList[key] = friendList[key];
-      }
-    }
-    this.setState({
-      friendList: newFriendList,
-    });
+    const { dispatch } = this.props;
+    dispatch(removefriend(name));
   };
 
   recommendMovie = (name) => {
-    const { friendList, item } = this.state;
-    const newFriendList = {};
-    let newList = friendList[name];
-    newList.movies.push(item.movieName);
-    for (let key in friendList) {
-      if (key !== name) {
-        newFriendList[key] = friendList[key];
-      }
-    }
-    newFriendList[name] = newList;
-    this.setState({
-      friendList: newFriendList,
-      newList,
-    });
+    const { dispatch } = this.props;
+    const { item } = this.state;
+    dispatch(recommend(name, item.movieName));
   };
 
   componentDidMount() {
@@ -116,25 +99,26 @@ class Recommend extends Component {
 
   render() {
     const { item, trailerURL, friend, friendList, notification } = this.state;
+    const { friendsLists } = this.props;
     return (
       <div className="recommendationContainer">
         <div className="mainRecommendDetails">
           <h1 className="recTitle">{item.movieName}</h1>
           <p className="recDetails">{item.movieDetails}</p>
-          {Object.keys(friendList).length > 0 &&
-            Object.keys(friendList).map((name, index) => (
+          {Object.keys(friendsLists).length > 0 &&
+            Object.keys(friendsLists).map((name, index) => (
               <div className="eachName" key={index}>
                 <div className="one">
-                  {friendList[name].name.charAt(0).toUpperCase() +
-                    friendList[name].name.substring(1)}
+                  {friendsLists[name].name.charAt(0).toUpperCase() +
+                    friendsLists[name].name.substring(1)}
                 </div>
                 <div className="two">
                   <button
                     className="recommendBtn"
                     onClick={() => this.recommendMovie(name)}
                   >
-                    {friendList[name]["movies"].length > 0 &&
-                    friendList[name]["movies"].filter(
+                    {friendsLists[name]["movies"].length > 0 &&
+                    friendsLists[name]["movies"].filter(
                       (movie) => movie === item.movieName
                     ).length > 0
                       ? "UnRecommend"
@@ -144,14 +128,14 @@ class Recommend extends Component {
                 <div className="three">
                   <button
                     className="deleteFriendbtn"
-                    onClick={() => this.handleDelete(name, item.movieName)}
+                    onClick={() => this.handleDelete(name)}
                   >
                     x
                   </button>
                 </div>
               </div>
             ))}
-          {Object.keys(friendList).length <= 4 && (
+          {Object.keys(friendsLists).length <= 4 && (
             <div>
               (
               <form onSubmit={this.handleSubmitFriend}>
@@ -160,7 +144,7 @@ class Recommend extends Component {
                   className="addField"
                   placeholder="add new friend"
                   value={friend}
-                  onChange={this.handleAddFriend}
+                  onChange={(e) => this.handleAddFriend(e, friendsLists)}
                 />
                 <button className="addBtn">Add Friend</button>
               </form>
@@ -168,14 +152,33 @@ class Recommend extends Component {
             </div>
           )}
           {notification && (
-            <Notification message={"Friend already added to list"} />
+            <Notification
+              itemcls={"fadeIn"}
+              message={"Friend already added to list"}
+            />
           )}
           {notification && !friend.length && (
-            <Notification message={"Error!!! name cannot be blank"} />
+            <Notification
+              itemcls={"fadeIn"}
+              message={"Error!!! name cannot be blank"}
+            />
           )}
+          <p>
+            <Link
+              to={{
+                pathname: "/",
+              }}
+              style={{ color: "#ffffff" }}
+            >
+              {"<< back to movie list"}
+            </Link>
+          </p>
         </div>
         <div className="mainRecommendMovie">
           {<YouTube videoId={trailerURL} opts={opts} />}
+          <p className="votes">
+            {item.movieRating}/10 out of {item.movieTotal} votes
+          </p>
         </div>
       </div>
     );
@@ -186,4 +189,10 @@ Recommend.propTypes = {
   category: PropTypes.number,
 };
 
-export default withRouter(Recommend);
+const mapStateToProps = (state) => {
+  return {
+    friendsLists: state,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(Recommend));

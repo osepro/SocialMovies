@@ -19,13 +19,11 @@ class Home extends Component {
   };
   componentDidMount() {
     apicall(213).then((res) => this.setState({ banners: res["results"] }));
-    apicall(453).then((res) => console.log(res));
   }
   render() {
     const { banners } = this.state;
     const features = banners.slice(1, 8);
     const bannerDisplay = Math.floor(Math.random() * (banners.length - 1) + 1);
-    console.log(banners);
     const details = this.trunDetails(banners[bannerDisplay]?.overview);
     return (
       <div className="mainApp">
