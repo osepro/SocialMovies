@@ -8,8 +8,18 @@
   width: 100%;
   transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
 }
+.fadeInHome {
+  color: #ffffff;
+  top: 45%;
+  padding: 1%;
+  position: fixed;
+  z-index: 10;
+  opacity: 1;
+  width: 100%;
+  transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+}
 .fadeIn {
-  color: white;
+  color: #ffffff;
   bottom: 0%;
   padding: 1%;
   position: fixed;

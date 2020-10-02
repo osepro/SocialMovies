@@ -5,9 +5,11 @@
 }
 .mainRecommendDetails {
   background-color: rgba(1, 1, 1, 1);
+  margin-top: 2em;
 }
 .mainRecommendMovie {
   width: 900px;
+  margin-top: 3em;
 }
 .recTitle {
   font-size: 3em;
