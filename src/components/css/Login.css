@@ -1,0 +1,31 @@
+html,
+body {
+  height: 100%;
+}
+.mainDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  min-height: 40em;
+  justify-content: center;
+}
+.noaccount {
+  color: #ffffff;
+}
+.trailerHeader {
+  font-size: 2em;
+  color: #ffffff;
+  font-style: normal;
+}
+.movieTitle {
+  background-color: red;
+  padding: 4px;
+  border-radius: 7px;
+  font-weight: bold;
+}

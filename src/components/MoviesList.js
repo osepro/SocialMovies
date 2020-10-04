@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import _ from "lodash";
-import apicall from "../utils/API";
+import { apicall } from "../utils/API";
 import PropTypes from "prop-types";
 import "./css//MoviesList.css";
 import YouTube from "react-youtube";
