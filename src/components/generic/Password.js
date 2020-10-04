@@ -1,0 +1,18 @@
+import React, { Fragment } from "react";
+import "../css/Generic.css";
+const Password = ({ display, value, userinput, name }) => {
+  return (
+    <Fragment>
+      <input
+        type="password"
+        className="textInput"
+        name={name}
+        placeholder={display}
+        value={value}
+        onChange={userinput}
+      />
+    </Fragment>
+  );
+};
+
+export default Password;

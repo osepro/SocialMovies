@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import recommend from "../reducers/recommend";
-const store = createStore(recommend);
+import reducer from "../reducers";
+const store = createStore(reducer);
 
 export default store;
