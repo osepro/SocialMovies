@@ -11,6 +11,7 @@ import addfriend from "../actions/addfriends";
 import removefriend from "../actions/removefriend";
 import recommend from "../actions/recommend";
 import { Link } from "react-router-dom";
+import store from "../store";
 const baseURL = "https://image.tmdb.org/t/p/original/";
 
 const opts = {
@@ -166,7 +167,7 @@ class Recommend extends Component {
           <p>
             <Link
               to={{
-                pathname: "/",
+                pathname: "/browse",
               }}
               style={{ color: "#ffffff" }}
             >
@@ -191,7 +192,7 @@ Recommend.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    friendsLists: state,
+    friendsLists: state.recommend,
   };
 };
 

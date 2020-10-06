@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { Route } from "react-router-dom";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import "./App.css";
 
 const Home = lazy(() => import("./components/Home"));
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
       <Suspense fallback={<div>Loading...</div>}>
         <Route exact path="/" component={Login} />
+        <Route exact path="/register" component={Register} />
         <Route exact path="/browse" component={Home} />
         <Route
           exact

@@ -1,0 +1,32 @@
+.topMenu {
+  display: flex;
+  background-color: #111111;
+  padding: 1em;
+}
+.titleDiv {
+  flex: 1;
+  font-size: 2em;
+  font-weight: 500;
+  color: #fff;
+}
+.menuDiv {
+  flex: 5;
+  justify-content: flex-end;
+}
+.trailerHeader {
+  font-size: 2em;
+  color: #ffffff;
+  font-style: normal;
+}
+.movieHeader {
+  background-color: red;
+  padding: 6px;
+  border-radius: 7px;
+  font-weight: bold;
+  color: #fff;
+}
+.menuItems li {
+  list-style: none;
+  float: left;
+  margin-right: 5px;
+}

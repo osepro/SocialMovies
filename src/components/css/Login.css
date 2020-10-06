@@ -23,9 +23,9 @@ body {
   color: #ffffff;
   font-style: normal;
 }
-.movieTitle {
+.movieHeader {
   background-color: red;
-  padding: 4px;
+  padding: 6px;
   border-radius: 7px;
   font-weight: bold;
 }

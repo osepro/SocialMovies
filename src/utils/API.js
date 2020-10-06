@@ -12,3 +12,8 @@ export async function getAllUsers() {
   const allUsers = await _getUsers();
   return allUsers;
 }
+
+export async function saveNewUser(name, username, id, email, password) {
+  const newUser = await _saveUsers(name, username, id, email, password);
+  return newUser;
+}

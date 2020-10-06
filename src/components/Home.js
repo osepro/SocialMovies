@@ -3,6 +3,7 @@ import _ from "lodash";
 import { apicall } from "../utils/API";
 import "./css/Home.css";
 import MoviesList from "./MoviesList";
+import Nav from "./Nav";
 import Banner from "./Banner";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -20,7 +21,7 @@ class Home extends Component {
     return details?.substring(0, 200);
   };
   componentDidMount() {
-    apicall(213).then((res) => this.setState({ banners: res["results"] }));
+    //apicall(213).then((res) => this.setState({ banners: res["results"] }));
     //apicall(453).then((res) => console.log(res));
   }
   render() {
@@ -35,6 +36,7 @@ class Home extends Component {
     }
     return (
       <div className="mainApp">
+        <Nav />
         <Banner
           banners={banner}
           bannerDisplay={bannerDisplay}
