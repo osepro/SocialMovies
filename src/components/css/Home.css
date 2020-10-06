@@ -1,35 +1,35 @@
 .mainApp {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	background-color: #111111;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #111111;
 }
 .titleHeader {
-	text-align: left;
-	padding-left: 0.5em;
-	color: #FFFFFF;
-	margin-top: 23px;
-    margin-bottom: 0;
+  text-align: left;
+  padding-left: 0.5em;
+  color: #ffffff;
+  margin-top: 23px;
+  margin-bottom: 0;
 }
 .featureHeader {
-	text-align: left;
-	padding-left: 0.5em;
-	color: #FFFFFF;
+  text-align: left;
+  padding-left: 0.5em;
+  color: #ffffff;
 }
 .featureMovie {
-	/*width: 200px;*/
-	display: flex;
-	overflow-y: hidden;
-	overflow-x: scroll;
+  /*width: 200px;*/
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 .featureMovie::-webkit-scrollbar {
-	display: none;
+  display: none;
 }
 .featureItem > img {
-	object-fit: contain;
-	height: 40em;
-	transition: transform 450ms;
+  object-fit: contain;
+  height: 40em;
+  transition: transform 450ms;
 }
 .featureItem > img:hover {
-	transform: scale(0.90)
+  transform: scale(0.9);
 }

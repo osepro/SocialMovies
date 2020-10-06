@@ -23,18 +23,21 @@ export function _getUsers() {
   });
 }
 
-export function _saveUsers(user, id) {
+export function _saveUsers(name, username, id, email, password) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
         ...users,
-        user: {
-          name: [user],
-          id,
+        [username]: {
+          username: username,
+          email: email,
+          password: password,
+          name: name,
+          id: id,
           friends: {},
         },
       };
-      res();
+      res({ ...users });
     }, 500);
   });
 }

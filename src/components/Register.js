@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import { getAllUsers, apicall } from "../utils/API";
+import { getAllUsers, apicall, saveNewUser } from "../utils/API";
 import "./css/Login.css";
 import Textbox from "./generic/Textbox";
 import Password from "./generic/Password";
-import ErrorMessage from "./generic/ErrorMessage";
 import Btn from "./generic/Button";
-import loggedin from "../actions/loggedin";
+import register from "../actions/register";
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 
-class Login extends Component {
+class Register extends Component {
   _isMounted = false;
   constructor(props) {
     super(props);
@@ -18,11 +17,13 @@ class Login extends Component {
       banners: [],
       username: "",
       password: "",
+      fullname: "",
+      cpassword: "",
       userRedirect: false,
       loading: "",
       isMounted: false,
       error: true,
-      invalid: false,
+      email: "",
     };
   }
 
@@ -30,12 +31,11 @@ class Login extends Component {
     this.setState({
       [e.target.name]: e.target.value,
       error: true,
-      invalid: false,
     });
   };
 
-  userLogin = () => {
-    const { username, password, isMounted } = this.state;
+  createUser = () => {
+    const { username, password, isMounted, fullname, email } = this.state;
     const { dispatch } = this.props;
 
     if (username.length && password.length) {
@@ -53,16 +53,22 @@ class Login extends Component {
       }
 
       if (username.length > 0 && password.length > 0) {
-        getAllUsers().then((user) => {
-          if (
-            user[username]["username"] === username &&
-            user[username]["password"] === password
-          ) {
-            dispatch(loggedin(username));
-            this.setState({ userRedirect: true });
-          } else {
-            this.setState({ invalid: true, password: "", loading: "" });
-          }
+        const userid = Math.floor(Math.random() * 1267);
+        saveNewUser(
+          fullname,
+          username,
+          userid,
+          email,
+          password
+        ).then((result) => console.log(result));
+        dispatch(register(fullname, username, userid, email, password));
+        this.setState({
+          username: "",
+          password: "",
+          cpassword: "",
+          fullname: "",
+          email: "",
+          loading: "",
         });
       }
     } else {
@@ -73,7 +79,6 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    //getAllUsers().then((user) => console.log(user));
     this.setState({ isMounted: true });
     apicall(213).then((res) => this.setState({ banners: res["results"] }));
   }
@@ -87,8 +92,10 @@ class Login extends Component {
       userRedirect,
       banners,
       loading,
+      fullname,
+      cpassword,
+      email,
       error,
-      invalid,
     } = this.state;
     if (userRedirect === true) {
       return (
@@ -102,11 +109,24 @@ class Login extends Component {
           <p className="trailerHeader">
             <span className="movieHeader">M</span>ovie Trailers
           </p>
-          {invalid && <ErrorMessage display={"Invalid username/password"} />}
+          <Textbox
+            display={"fullname"}
+            name={"fullname"}
+            value={fullname}
+            error={error}
+            userinput={this.getUserInput}
+          />
           <Textbox
             display={"username"}
             name={"username"}
             value={username}
+            error={error}
+            userinput={this.getUserInput}
+          />
+          <Textbox
+            display={"email"}
+            name={"email"}
+            value={email}
             error={error}
             userinput={this.getUserInput}
           />
@@ -117,14 +137,25 @@ class Login extends Component {
             error={error}
             userinput={this.getUserInput}
           />
-          <Btn display={"Login"} load={loading} click={this.userLogin} />
+          <Password
+            display={"confirm password"}
+            name={"cpassword"}
+            value={cpassword}
+            error={error}
+            userinput={this.getUserInput}
+          />
+          <Btn
+            display={"Create Account"}
+            load={loading}
+            click={this.createUser}
+          />
           <Link
             to={{
-              pathname: "/register",
+              pathname: "/",
             }}
             style={{ color: "#ffffff", textDecoration: "none" }}
           >
-            {"Have no account register"}
+            {"Have account Login"}
           </Link>
         </div>
       </div>
@@ -132,9 +163,10 @@ class Login extends Component {
   }
 }
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     currentuser: state.loggedin,
   };
 };
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Register);

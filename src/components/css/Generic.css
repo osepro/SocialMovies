@@ -17,4 +17,15 @@ input {
   background-color: red;
   font-weight: bold;
   border: 0;
+  outline: 0;
+}
+.error {
+  border: solid 1px red;
+}
+.errorMsg {
+  background-color: red;
+  color: #fff;
+  padding: 4px;
+  font-size: 12px;
+  border-radius: 5px;
 }
