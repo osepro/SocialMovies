@@ -28,8 +28,15 @@
 .featureItem > img {
   object-fit: contain;
   height: 40em;
-  transition: transform 450ms;
+  /*transition: transform 450ms;*/
 }
 .featureItem > img:hover {
-  transform: scale(0.9);
+  /*transform: scale(0.9);*/
+}
+.featureItem {
+  width: 165px;
+  transition: width 1s;
+}
+.featureItem:hover {
+  width: 410px;
 }

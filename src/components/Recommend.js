@@ -164,16 +164,6 @@ class Recommend extends Component {
               message={"Error!!! name cannot be blank"}
             />
           )}
-          <p>
-            <Link
-              to={{
-                pathname: "/browse",
-              }}
-              style={{ color: "#ffffff" }}
-            >
-              {"<< back to movie list"}
-            </Link>
-          </p>
         </div>
         <div className="mainRecommendMovie">
           {<YouTube videoId={trailerURL} opts={opts} />}
