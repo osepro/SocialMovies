@@ -1,0 +1,36 @@
+{
+  "files": {
+    "static/js/0.1e6e467c.chunk.js": "/SocialMovies/static/js/0.1e6e467c.chunk.js",
+    "static/js/0.1e6e467c.chunk.js.map": "/SocialMovies/static/js/0.1e6e467c.chunk.js.map",
+    "main.css": "/SocialMovies/static/css/main.ca5bec88.chunk.css",
+    "main.js": "/SocialMovies/static/js/main.f2cb7a38.chunk.js",
+    "main.js.map": "/SocialMovies/static/js/main.f2cb7a38.chunk.js.map",
+    "runtime-main.js": "/SocialMovies/static/js/runtime-main.8c6442ed.js",
+    "runtime-main.js.map": "/SocialMovies/static/js/runtime-main.8c6442ed.js.map",
+    "static/js/3.4736f32d.chunk.js": "/SocialMovies/static/js/3.4736f32d.chunk.js",
+    "static/js/3.4736f32d.chunk.js.map": "/SocialMovies/static/js/3.4736f32d.chunk.js.map",
+    "static/css/4.15d02bb3.chunk.css": "/SocialMovies/static/css/4.15d02bb3.chunk.css",
+    "static/js/4.2c6820cd.chunk.js": "/SocialMovies/static/js/4.2c6820cd.chunk.js",
+    "static/js/4.2c6820cd.chunk.js.map": "/SocialMovies/static/js/4.2c6820cd.chunk.js.map",
+    "static/css/5.73043acc.chunk.css": "/SocialMovies/static/css/5.73043acc.chunk.css",
+    "static/js/5.876a0036.chunk.js": "/SocialMovies/static/js/5.876a0036.chunk.js",
+    "static/js/5.876a0036.chunk.js.map": "/SocialMovies/static/js/5.876a0036.chunk.js.map",
+    "static/js/6.90929658.chunk.js": "/SocialMovies/static/js/6.90929658.chunk.js",
+    "static/js/6.90929658.chunk.js.map": "/SocialMovies/static/js/6.90929658.chunk.js.map",
+    "index.html": "/SocialMovies/index.html",
+    "precache-manifest.ffb91f6975730119f734e93cf0ccd2ff.js": "/SocialMovies/precache-manifest.ffb91f6975730119f734e93cf0ccd2ff.js",
+    "service-worker.js": "/SocialMovies/service-worker.js",
+    "static/css/4.15d02bb3.chunk.css.map": "/SocialMovies/static/css/4.15d02bb3.chunk.css.map",
+    "static/css/5.73043acc.chunk.css.map": "/SocialMovies/static/css/5.73043acc.chunk.css.map",
+    "static/css/main.ca5bec88.chunk.css.map": "/SocialMovies/static/css/main.ca5bec88.chunk.css.map",
+    "static/js/0.1e6e467c.chunk.js.LICENSE.txt": "/SocialMovies/static/js/0.1e6e467c.chunk.js.LICENSE.txt",
+    "static/js/3.4736f32d.chunk.js.LICENSE.txt": "/SocialMovies/static/js/3.4736f32d.chunk.js.LICENSE.txt",
+    "static/js/6.90929658.chunk.js.LICENSE.txt": "/SocialMovies/static/js/6.90929658.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8c6442ed.js",
+    "static/js/3.4736f32d.chunk.js",
+    "static/css/main.ca5bec88.chunk.css",
+    "static/js/main.f2cb7a38.chunk.js"
+  ]
+}
