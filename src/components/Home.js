@@ -5,6 +5,7 @@ import "./css/Home.css";
 import MoviesList from "./MoviesList";
 import Nav from "./Nav";
 import Banner from "./Banner";
+import movieTrailer from "movie-trailer";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -15,10 +16,41 @@ class Home extends Component {
     super(props);
     this.state = {
       banners: [],
+      trailerURL: "",
     };
   }
   trunDetails = (details) => {
     return details?.substring(0, 200);
+  };
+  playOnMouseOver = () => {
+    let start = 0;
+    let play = setInterval(() => {
+      start += 1;
+      if (start === 100) {
+        clearInterval(play);
+      }
+      console.log(start);
+    }, 10);
+    console.log(start);
+  };
+  handlePlaying = (movie) => {
+    const { trailerURL } = this.state;
+    if (trailerURL) {
+      this.setState({
+        trailerURL: "",
+      });
+    } else {
+      movieTrailer(movie?.name)
+        .then((url) => {
+          const URLParams = new URLSearchParams(new URL(url).search);
+          this.setState((prevState) => ({
+            trailerURL: URLParams.get("v"),
+          }));
+        })
+        .catch((error) =>
+          this.showDisplay("Movie trailer currently not available", true)
+        );
+    }
   };
   componentDidMount() {
     //apicall(213).then((res) => this.setState({ banners: res["results"] }));
@@ -51,7 +83,11 @@ class Home extends Component {
         <h1 className="featureHeader">Features</h1>
         <div className="featureMovie">
           {features.map((feature, index) => (
-            <div key={index} className="featureItem">
+            <div
+              key={index}
+              className="featureItem"
+              onMouseEnter={this.playOnMouseOver}
+            >
               <img
                 src={`${baseURL}${feature.poster_path}`}
                 alt={feature.name}
