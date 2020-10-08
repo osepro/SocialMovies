@@ -9,7 +9,19 @@ const Recommend = lazy(() => import("./components/Recommend"));
 function App() {
   return (
     <div className="App">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div
+            style={{
+              fontSize: 25,
+              backgroundColor: "#ff0000",
+              color: "#ffffff",
+            }}
+          >
+            Loading...
+          </div>
+        }
+      >
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/browse" component={Home} />
@@ -17,9 +29,7 @@ function App() {
           exact
           path="/recommend"
           render={(props) => <Recommend {...props} />}
-        >
-          <Recommend />
-        </Route>
+        />
       </Suspense>
     </div>
   );

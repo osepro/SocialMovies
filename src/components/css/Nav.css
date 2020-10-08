@@ -2,6 +2,18 @@
   display: flex;
   background-color: #111111;
   padding: 1em;
+  top: 0;
+  position: fixed;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  z-index: 1;
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+}
+.top_menu_red {
+  background-color: #111111;
+  opacity: 0.4;
 }
 .titleDiv {
   flex: 1;
@@ -12,6 +24,7 @@
 .menuDiv {
   flex: 5;
   justify-content: flex-end;
+  padding-right: 40px;
 }
 .trailerHeader {
   font-size: 2em;
@@ -19,14 +32,29 @@
   font-style: normal;
 }
 .movieHeader {
-  background-color: red;
+  background-color: #ff0000;
   padding: 6px;
   border-radius: 7px;
   font-weight: bold;
   color: #fff;
+  transition: all 0.5s;
+}
+.movieHeaderIinit {
+  color: red;
+  background-color: #fff;
 }
 .menuItems li {
   list-style: none;
   float: left;
   margin-right: 5px;
+}
+.listItem {
+  display: flex;
+  justify-content: flex-end;
+}
+.listItem li {
+  list-style: none;
+  float: left;
+  margin-right: 12px;
+  color: #ffffff;
 }

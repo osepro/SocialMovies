@@ -2,10 +2,12 @@
   display: flex;
   flex-direction: row;
   max-height: 100%;
+  padding-top: 4em;
 }
 .mainRecommendDetails {
   background-color: rgba(1, 1, 1, 1);
   margin-top: 2em;
+  padding-left: 1em;
 }
 .mainRecommendMovie {
   width: 900px;
@@ -82,4 +84,10 @@
   border: none;
   font-weight: bold;
   outline: 0;
+}
+.backHome {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 1em;
 }
