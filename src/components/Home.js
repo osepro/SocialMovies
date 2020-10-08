@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import _ from "lodash";
-import { apicall } from "../utils/API";
 import "./css/Home.css";
 import MoviesList from "./MoviesList";
 import Nav from "./Nav";
@@ -29,9 +27,9 @@ class Home extends Component {
       if (start === 100) {
         clearInterval(play);
       }
-      console.log(start);
+      //console.log(start);
     }, 10);
-    console.log(start);
+    //console.log(start);
   };
   handlePlaying = (movie) => {
     const { trailerURL } = this.state;
@@ -57,15 +55,13 @@ class Home extends Component {
     //apicall(453).then((res) => console.log(res));
   }
   render() {
-    const { banners } = this.state;
-    const { banner } = this.props.location.state;
+    const { currentuser, banner } = this.props;
+    if (!currentuser || !banner) {
+      return <Redirect to="/" />;
+    }
     const features = banner.slice(1, 8);
     const bannerDisplay = Math.floor(Math.random() * (banner.length - 1) + 1);
     const details = this.trunDetails(banner[bannerDisplay]?.overview);
-    const { currentuser } = this.props;
-    if (!currentuser) {
-      return <Redirect to="/" />;
-    }
     return (
       <div className="mainApp">
         <Nav />
@@ -108,7 +104,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentuser: state.loggedin,
+    currentuser: state.loggedin.loggediduser,
+    banner: state.loggedin.banners,
   };
 };
 

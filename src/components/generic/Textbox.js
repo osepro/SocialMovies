@@ -1,4 +1,3 @@
-import { values } from "lodash";
 import React, { Fragment } from "react";
 import "../css/Generic.css";
 

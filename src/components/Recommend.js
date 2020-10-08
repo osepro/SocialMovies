@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import apicall from "../utils/API";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import "./css/Recommend.css";
@@ -10,9 +9,11 @@ import { connect } from "react-redux";
 import addfriend from "../actions/addfriends";
 import removefriend from "../actions/removefriend";
 import recommend from "../actions/recommend";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import store from "../store";
-const baseURL = "https://image.tmdb.org/t/p/original/";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import Nav from "./Nav";
 
 const opts = {
   height: "390",
@@ -27,7 +28,6 @@ class Recommend extends Component {
       item: this.props.location?.state,
       trailerURL: "",
       friend: "",
-      friendList: {},
       notification: false,
     };
   }
@@ -99,10 +99,14 @@ class Recommend extends Component {
   }
 
   render() {
-    const { item, trailerURL, friend, friendList, notification } = this.state;
-    const { friendsLists } = this.props;
+    const { item, trailerURL, friend, notification } = this.state;
+    const { friendsLists, currentuser } = this.props;
+    if (!currentuser) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="recommendationContainer">
+        <Nav />
         <div className="mainRecommendDetails">
           <h1 className="recTitle">{item.movieName}</h1>
           <p className="recDetails">{item.movieDetails}</p>
@@ -164,6 +168,17 @@ class Recommend extends Component {
               message={"Error!!! name cannot be blank"}
             />
           )}
+          <div className="backHome">
+            <Link
+              to={{
+                pathname: "/browse",
+              }}
+              style={{ color: "#ffffff", textDecoration: "none" }}
+            >
+              {"<< Back "}
+              <FontAwesomeIcon icon={faHome} />
+            </Link>
+          </div>
         </div>
         <div className="mainRecommendMovie">
           {<YouTube videoId={trailerURL} opts={opts} />}
@@ -183,6 +198,7 @@ Recommend.propTypes = {
 const mapStateToProps = (state) => {
   return {
     friendsLists: state.recommend,
+    currentuser: state.loggedin.loggediduser,
   };
 };
 

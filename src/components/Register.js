@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import _ from "lodash";
-import { getAllUsers, apicall, saveNewUser } from "../utils/API";
+//import _ from "lodash";
+import { apicall, saveNewUser } from "../utils/API";
 import "./css/Login.css";
 import Textbox from "./generic/Textbox";
 import Password from "./generic/Password";
