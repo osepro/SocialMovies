@@ -15,6 +15,14 @@ let users = {
     id: 2341,
     friends: { Camille: ["Ratched"] },
   },
+  ade: {
+    username: "ade",
+    email: "ade@email.com",
+    password: "ade",
+    name: "Ade Rilwan",
+    id: 2341,
+    friends: { Femi: ["Richie Rich"] },
+  },
 };
 
 export function _getUsers() {
