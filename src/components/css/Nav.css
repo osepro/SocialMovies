@@ -55,6 +55,25 @@
 .listItem li {
   list-style: none;
   float: left;
-  margin-right: 12px;
+  margin-right: 1em;
   color: #ffffff;
+  cursor: pointer;
+}
+.listItem li:hover {
+  color: antiquewhite;
+}
+.logOff {
+  color: greenyellow;
+}
+.logOff:hover {
+  color: red;
+}
+.addedMovie {
+  padding: 2px;
+  background-color: red;
+  position: absolute;
+  top: 20px;
+  right: 7%;
+  font-size: 12px;
+  border-radius: 2px;
 }

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
 import "./css/Nav.css";
+import loggedin from "../actions/loggedin";
+import AddFriend from "./AddFriend";
+import MoviesNoties from "./MoviesNoties";
 //import { Link } from "react-router-dom";
 
 class Nav extends Component {
@@ -9,6 +13,8 @@ class Nav extends Component {
     super(props);
     this.state = {
       scrolling: false,
+      show: false,
+      showMovie: false,
     };
   }
 
@@ -16,6 +22,22 @@ class Nav extends Component {
     this.setState({
       scrolling: obj,
     });
+  };
+  addFriendShow = () => {
+    this.setState((prevState) => ({
+      show: !prevState.show,
+    }));
+  };
+
+  showNotification = () => {
+    this.setState((prevState) => ({
+      showMovie: !prevState.showMovie,
+    }));
+  };
+
+  logOut = () => {
+    const { dispatch } = this.props;
+    dispatch(loggedin(""));
   };
   componentDidMount() {
     window.addEventListener("scroll", () => {
@@ -30,7 +52,8 @@ class Nav extends Component {
     window.removeEventListener("scroll", this.isScrolling);
   }
   render() {
-    const { scrolling } = this.state;
+    const { scrolling, show, showMovie } = this.state;
+    const { recentlyrecommend } = this.props;
     return (
       <div className={`topMenu ${scrolling && "top_menu_red"}`}>
         <div className="titleDiv">
@@ -41,17 +64,30 @@ class Nav extends Component {
         </div>
         <div className="menuDiv">
           <ul className="listItem">
-            <li>Recommended</li>
+            <li onClick={this.addFriendShow}>Add Friend</li>
             <li>Watch List</li>
-            <li>Notifications</li>
-            <li>
-              <FontAwesomeIcon icon={faPowerOff} style={{ color: "#ff0000" }} />
+            <li onClick={this.showNotification}>
+              Notifications
+              <div className="addedMovie">{recentlyrecommend.length}</div>
+            </li>
+            <li onClick={this.logOut}>
+              <FontAwesomeIcon icon={faPowerOff} className="logOff" />
             </li>
           </ul>
         </div>
+        {show && <AddFriend />}
+        {showMovie && <MoviesNoties />}
       </div>
     );
   }
 }
 
-export default Nav;
+const mapStateToProps = (state) => {
+  return {
+    recentlyrecommend: state.recentlyrecommend,
+    currentuser: state.loggedin.loggediduser,
+    banner: state.loggedin.banners,
+  };
+};
+
+export default connect(mapStateToProps)(Nav);

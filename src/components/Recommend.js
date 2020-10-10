@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import addfriend from "../actions/addfriends";
 import removefriend from "../actions/removefriend";
 import recommend from "../actions/recommend";
+import { recentlyrecommend } from "../actions/recentlyrecommend";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -88,9 +89,25 @@ class Recommend extends Component {
   };
 
   recommendMovie = (name) => {
-    const { dispatch } = this.props;
+    const { dispatch, recentlyrecommededadded } = this.props;
     const { item } = this.state;
     dispatch(recommend(name, item.movieName));
+    dispatch(recentlyrecommend(name, item.movieName));
+
+    /*console.log(recentlyrecommededadded);
+
+    let isExist = recentlyrecommededadded.map((rec, index) => {
+      if (rec[index][name] === item.movieName) return true;
+      return false;
+    });
+
+    console.log(isExist);*/
+
+    /*if (isExist) {
+      dispatch(unrecommend(name, item.movieName));
+    } else {
+      dispatch(recentlyrecommend(name, item.movieName));
+    }*/
   };
 
   componentDidMount() {
@@ -140,34 +157,7 @@ class Recommend extends Component {
                 </div>
               </div>
             ))}
-          {Object.keys(friendsLists).length <= 4 && (
-            <div>
-              (
-              <form onSubmit={this.handleSubmitFriend}>
-                <input
-                  type="text"
-                  className="addField"
-                  placeholder="add new friend"
-                  value={friend}
-                  onChange={(e) => this.handleAddFriend(e, friendsLists)}
-                />
-                <button className="addBtn">Add Friend</button>
-              </form>
-              )
-            </div>
-          )}
-          {notification && (
-            <Notification
-              itemcls={"fadeIn"}
-              message={"Friend already added to list"}
-            />
-          )}
-          {notification && !friend.length && (
-            <Notification
-              itemcls={"fadeIn"}
-              message={"Error!!! name cannot be blank"}
-            />
-          )}
+
           <div className="backHome">
             <Link
               to={{
@@ -199,6 +189,7 @@ const mapStateToProps = (state) => {
   return {
     friendsLists: state.recommend,
     currentuser: state.loggedin.loggediduser,
+    recentlyrecommededadded: state.recentlyrecommend,
   };
 };
 
